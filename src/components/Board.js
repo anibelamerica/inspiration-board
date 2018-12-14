@@ -38,8 +38,20 @@ class Board extends Component {
   }
 
   deleteCard = (cardId) => {
+    // https://inspiration-board.herokuapp.com/cards/:card_id
     console.log(cardId);
     console.log("I'm in the delete card method");
+    const deleteURL = "https://inspiration-board.herokuapp.com/cards/" + cardId;
+
+    axios.delete(deleteURL)
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((error) => {
+      this.setState({
+        error: error.message
+      });
+    });
   }
 
   render() {
