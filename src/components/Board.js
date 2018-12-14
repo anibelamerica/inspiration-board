@@ -38,21 +38,67 @@ class Board extends Component {
   }
 
   deleteCard = (cardId) => {
-    // https://inspiration-board.herokuapp.com/cards/:card_id
     console.log(cardId);
     console.log("I'm in the delete card method");
     const deleteURL = "https://inspiration-board.herokuapp.com/cards/" + cardId;
 
     axios.delete(deleteURL)
     .then((response) => {
-      console.log(response.data);
+      const newCards = [...this.state.cards];
+      const index = newCards.findIndex(content => content.card.id === cardId);
+      newCards.splice(index, 1);
+
+      this.setState({
+        cards: newCards
+      });
     })
     .catch((error) => {
       this.setState({
         error: error.message
       });
     });
-  }
+  };
+
+  // console.log("Trying to add pet in the PetList component");
+  // console.log(petData, "petData");
+  // axios.post('https://petdibs.herokuapp.com/pets', petData)
+  // .then((response) => {
+  //   // What should we do when we know the post request worked?
+  //   console.log('we definitely have a new pet!', petData);
+  //
+  //   const updatedPetList = [ ...this.state.pets, petData]
+  //
+  //   this.setState({
+  //     pets: updatedPetList,
+  //   })
+  // })
+  // .catch((error) => {
+  //   // What should we do when we know the post request failed?
+  // });
+
+  // https://inspiration-board.herokuapp.com/boards/:board_name/cards
+
+  addCard = (cardData) => {
+    const POST_INSPO_CARDS_URL = this.props.url + '/' + this.props.boardName + '/cards';
+    axios.post(POST_INSPO_CARDS_URL, cardData)
+    .then((response) => {
+      cardData.id = response.data.card.id;
+
+      const updatedCardDeck = [...this.state.cards, {card: cardData}];
+
+      this.setState({
+        cards: updatedCardDeck
+      })
+
+    })
+    .catch((error) => {
+      console.log("no dice");
+      this.setState({
+        error: error.message
+      });
+    });
+
+  };
 
   render() {
 
@@ -64,6 +110,8 @@ class Board extends Component {
 
     return (
       <div className="board">
+        <NewCardForm
+          addCardCallback={this.addCard}/>
         { cardList }
       </div>
     )
