@@ -6,8 +6,9 @@ import './Card.css';
 
 class Card extends Component {
   render() {
-    const { text, emoji } = this.props.card;
+    const { id, text, emoji } = this.props.card;
     const emojiLib = require("emoji-dictionary");
+    console.log(this.props.card);
 
     return (
       <div className="card">
@@ -16,6 +17,11 @@ class Card extends Component {
             <h1 className='card__content-text'>{text}</h1>}
           { emoji &&
             <div className='card__content-emoji'>{emojiLib.getUnicode(emoji)}</div>}
+          <div>
+            <button
+              className='card__delete'
+              onClick={() => this.props.deleteCardCallback(id)}>Delete</button>
+          </div>
         </div>
       </div>
     )
@@ -24,6 +30,7 @@ class Card extends Component {
 
 Card.propTypes = {
   card: PropTypes.object,
+  deleteCardCallback: PropTypes.func
   // text: PropTypes.string,
   // emoji: PropTypes.string,
 };

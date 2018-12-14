@@ -37,11 +37,17 @@ class Board extends Component {
     });
   }
 
+  deleteCard = (cardId) => {
+    console.log(cardId);
+    console.log("I'm in the delete card method");
+  }
+
   render() {
 
     const cardList = this.state.cards.map((cardContainer, i) => {
       return <Card key={i}
-        card={cardContainer.card} />
+        card={cardContainer.card}
+        deleteCardCallback={this.deleteCard} />
     });
 
     return (
