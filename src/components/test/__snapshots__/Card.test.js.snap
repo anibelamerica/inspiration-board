@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card that it renders even when passed an empty object prop 1`] = `
+<div
+  className="card"
+>
+  <div
+    className="card__content"
+  />
+</div>
+`;
+
+exports[`Card that it renders when passed an empty object prop 1`] = `
+<div
+  className="card"
+>
+  <div
+    className="card__content"
+  />
+</div>
+`;
+
+exports[`Card that it renders when passed an object prop with text and emoji fields 1`] = `
+<div
+  className="card"
+>
+  <div
+    className="card__content"
+  />
+</div>
+`;

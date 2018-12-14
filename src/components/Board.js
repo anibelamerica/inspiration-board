@@ -39,8 +39,8 @@ class Board extends Component {
 
   render() {
 
-    const cardList = this.state.cards.map((cardContainer) => {
-      return <Card key={cardContainer.id}
+    const cardList = this.state.cards.map((cardContainer, i) => {
+      return <Card key={i}
         card={cardContainer.card} />
     });
 
@@ -54,8 +54,8 @@ class Board extends Component {
 }
 
 Board.propTypes = {
-  url: PropTypes.string,
-  boardName: PropTypes.string
+  url: PropTypes.string.isRequired,
+  boardName: PropTypes.string.isRequired
 };
 
 export default Board;
