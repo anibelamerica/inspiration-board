@@ -5,14 +5,13 @@ import axios from 'axios';
 import './Board.css';
 import Card from './Card';
 import NewCardForm from './NewCardForm';
-import CARD_DATA from '../data/card-data.json';
+// import CARD_DATA from '../data/card-data.json';
 
 class Board extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      // cards: CARD_DATA.cards,
       url: this.props.url,
       boardName: this.props.boardName,
       cards: []
@@ -59,6 +58,7 @@ class Board extends Component {
     });
   };
 
+<<<<<<< HEAD
   // console.log("Trying to add pet in the PetList component");
   // console.log(petData, "petData");
   // axios.post('https://petdibs.herokuapp.com/pets', petData)
@@ -78,6 +78,8 @@ class Board extends Component {
 
   // https://inspiration-board.herokuapp.com/boards/:board_name/cards
 
+=======
+>>>>>>> changeBoard
   addCard = (cardData) => {
     const POST_INSPO_CARDS_URL = this.props.url + '/' + this.props.boardName + '/cards';
     axios.post(POST_INSPO_CARDS_URL, cardData)
@@ -92,7 +94,6 @@ class Board extends Component {
 
     })
     .catch((error) => {
-      console.log("no dice");
       this.setState({
         error: error.message
       });
@@ -109,10 +110,20 @@ class Board extends Component {
     });
 
     return (
+<<<<<<< HEAD
       <div className="board">
         <NewCardForm
           addCardCallback={this.addCard}/>
         { cardList }
+=======
+      <div>
+        <div className="board">
+          { cardList }
+
+          <NewCardForm
+            addCardCallback={this.addCard}/>
+        </div>
+>>>>>>> changeBoard
       </div>
     )
   }

@@ -27,6 +27,7 @@ class NewCardForm extends Component{
 
   getFormFields = () => {
     return FIELDS.map((field, i) => {
+<<<<<<< HEAD
       return <div key={i}>
         <label htmlFor={field} className="new-card-form__form-label">{field}</label>
         <input
@@ -36,6 +37,28 @@ class NewCardForm extends Component{
           onChange={this.onInputChange}
           className="new-card-form__form-textarea"/>
       </div>
+=======
+      return (
+        <div key={i}>
+          <div>
+              <label htmlFor={field} className="new-card-form__form-label">
+                <h1>
+                  {field}
+                </h1>
+              </label>
+          </div>
+          <div>
+            <textarea
+              name={field}
+              type="textarea"
+              value={this.state[field]}
+              onChange={this.onInputChange}
+              className="new-card-form__form-textarea"/>
+          </div>
+        </div>
+
+      )
+>>>>>>> changeBoard
     })
   };
 
@@ -75,7 +98,9 @@ class NewCardForm extends Component{
   render() {
     return (
       <section className="new-card-form">
-        <section className="new-card-form__header">Send an Inspiration!</section>
+        <section className="new-card-form__header">
+          <h1>Send an Inspiration!</h1>
+        </section>
         <form
           className="new-card-form__form"
           onSubmit={this.onFormSubmit}>
