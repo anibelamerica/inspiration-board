@@ -15,12 +15,10 @@ class Board extends Component {
       url: this.props.url,
       boardName: this.props.boardName,
       cards: []
-
     };
   }
 
   componentDidMount() {
-    console.log("Board is mounted!");
     const GET_INSPO_CARDS_URL = this.props.url + '/' + this.props.boardName + '/cards';
 
     axios.get(GET_INSPO_CARDS_URL)
@@ -37,8 +35,6 @@ class Board extends Component {
   }
 
   deleteCard = (cardId) => {
-    console.log(cardId);
-    console.log("I'm in the delete card method");
     const deleteURL = "https://inspiration-board.herokuapp.com/cards/" + cardId;
 
     axios.delete(deleteURL)
@@ -58,28 +54,6 @@ class Board extends Component {
     });
   };
 
-<<<<<<< HEAD
-  // console.log("Trying to add pet in the PetList component");
-  // console.log(petData, "petData");
-  // axios.post('https://petdibs.herokuapp.com/pets', petData)
-  // .then((response) => {
-  //   // What should we do when we know the post request worked?
-  //   console.log('we definitely have a new pet!', petData);
-  //
-  //   const updatedPetList = [ ...this.state.pets, petData]
-  //
-  //   this.setState({
-  //     pets: updatedPetList,
-  //   })
-  // })
-  // .catch((error) => {
-  //   // What should we do when we know the post request failed?
-  // });
-
-  // https://inspiration-board.herokuapp.com/boards/:board_name/cards
-
-=======
->>>>>>> changeBoard
   addCard = (cardData) => {
     const POST_INSPO_CARDS_URL = this.props.url + '/' + this.props.boardName + '/cards';
     axios.post(POST_INSPO_CARDS_URL, cardData)
@@ -98,11 +72,9 @@ class Board extends Component {
         error: error.message
       });
     });
-
   };
 
   render() {
-
     const cardList = this.state.cards.map((cardContainer, i) => {
       return <Card key={i}
         card={cardContainer.card}
@@ -110,24 +82,13 @@ class Board extends Component {
     });
 
     return (
-<<<<<<< HEAD
       <div className="board">
         <NewCardForm
           addCardCallback={this.addCard}/>
         { cardList }
-=======
-      <div>
-        <div className="board">
-          { cardList }
-
-          <NewCardForm
-            addCardCallback={this.addCard}/>
-        </div>
->>>>>>> changeBoard
       </div>
     )
   }
-
 }
 
 Board.propTypes = {

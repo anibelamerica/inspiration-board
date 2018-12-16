@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Board from './components/Board';
-import axios from 'axios';
+// import axios from 'axios';
 
 class App extends Component {
   constructor() {
@@ -13,41 +13,38 @@ class App extends Component {
     };
   }
 
-  componentDidMount() {
-    console.log("Grabbing a board");
-    axios.get("https://inspiration-board.herokuapp.com/boards")
-    .then((response) => {
-      const names = response.data.map((board) => {
-        return board.board.name
-      })
-      this.setState({
-        boards: names,
-      });
-    })
-    .catch((error) => {
-      this.setState({
-        error: error.message
-      });
-    });
-  }
-
-  getBoardOptions = () => {
-    return this.state.boards.map((board, i) => {
-      return <option key={i} value={board}>{board}</option>
-    });
-  };
-
-  changeBoardName = (event) => {
-    // this.setState()
-    console.log(event.target.value);
-    this.setState({
-      value: event.target.value
-    });
-  }
+  // componentDidMount() {
+  //   console.log("Grabbing a board");
+  //   axios.get("https://inspiration-board.herokuapp.com/boards")
+  //   .then((response) => {
+  //     const names = response.data.map((board) => {
+  //       return board.board.name
+  //     })
+  //     this.setState({
+  //       boards: names,
+  //     });
+  //   })
+  //   .catch((error) => {
+  //     this.setState({
+  //       error: error.message
+  //     });
+  //   });
+  // }
+  //
+  // getBoardOptions = () => {
+  //   return this.state.boards.map((board, i) => {
+  //     return <option key={i} value={board}>{board}</option>
+  //   });
+  // };
+  //
+  // changeBoardName = (event) => {
+  //   this.setState({
+  //     value: event.target.value
+  //   });
+  // }
 
 
   render() {
-    console.log(this.state.boards);
     return (
       <section>
         <header className="header">
@@ -56,13 +53,14 @@ class App extends Component {
 
         <section>
           <p>Inspiration board for {this.state.value}</p>
-          <select
-            onChange={this.changeBoardName}
-            value={this.state.value}>
-            {this.getBoardOptions()}
-          </select>
         </section>
-        
+{//           <select
+//             onChange={this.changeBoardName}
+//             value={this.state.value}>
+//             {this.getBoardOptions()}
+//           </select>
+}
+
         <Board
           url="https://inspiration-board.herokuapp.com/boards/"
           boardName={this.state.value}

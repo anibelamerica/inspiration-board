@@ -8,7 +8,6 @@ class Card extends Component {
   render() {
     const { id, text, emoji } = this.props.card;
     const emojiLib = require("emoji-dictionary");
-    // console.log(this.props.card);
 
     return (
       <div className="card">
@@ -31,8 +30,6 @@ class Card extends Component {
 Card.propTypes = {
   card: PropTypes.object,
   deleteCardCallback: PropTypes.func
-  // text: PropTypes.string,
-  // emoji: PropTypes.string,
 };
 
 export default Card;

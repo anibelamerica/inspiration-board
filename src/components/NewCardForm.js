@@ -22,45 +22,7 @@ class NewCardForm extends Component{
     newState[event.target.name] = event.target.value;
 
     this.setState(newState);
-    console.log(this.state);
   }
-
-  getFormFields = () => {
-    return FIELDS.map((field, i) => {
-<<<<<<< HEAD
-      return <div key={i}>
-        <label htmlFor={field} className="new-card-form__form-label">{field}</label>
-        <input
-          name={field}
-          type="text"
-          value={this.state[field]}
-          onChange={this.onInputChange}
-          className="new-card-form__form-textarea"/>
-      </div>
-=======
-      return (
-        <div key={i}>
-          <div>
-              <label htmlFor={field} className="new-card-form__form-label">
-                <h1>
-                  {field}
-                </h1>
-              </label>
-          </div>
-          <div>
-            <textarea
-              name={field}
-              type="textarea"
-              value={this.state[field]}
-              onChange={this.onInputChange}
-              className="new-card-form__form-textarea"/>
-          </div>
-        </div>
-
-      )
->>>>>>> changeBoard
-    })
-  };
 
   resetState = () => {
     this.setState({
@@ -71,31 +33,22 @@ class NewCardForm extends Component{
 
   onFormSubmit = (event) => {
     event.preventDefault();
-    const { text, emoji} = this.state;
-
+    // const { text, emoji} = this.state;
     this.props.addCardCallback(this.state);
     this.resetState();
   }
 
-//   getFields() {
-//   const exampleFormat = this.props.fields.map((field) => {
-//     if (field.key) {
-//       return <input
-//         placeholder={field.placeholder}
-//         name={field.key}
-//         type="text"
-//         value={this.state[field.key]}
-//         onChange={this.onInputChange}
-//         className={this.inputValid(field.key)}/>
-//
-//     } else {
-//       return field;
-//     }
-//   });
-//   return exampleFormat;
-// }
-
   render() {
+    const emojiLib = require("emoji-dictionary");
+    const emojiOptions = EMOJI_LIST.map((emoji, i) => {
+        return (
+          <option
+            key={i}
+            value={emoji}>
+            {emojiLib.getUnicode(emoji)}
+          </option>)
+      });
+
     return (
       <section className="new-card-form">
         <section className="new-card-form__header">
@@ -104,21 +57,34 @@ class NewCardForm extends Component{
         <form
           className="new-card-form__form"
           onSubmit={this.onFormSubmit}>
-          { this.getFormFields() }
-          <div>
+
+
+                <label htmlFor="Text" className="new-card-form__form-label">
+                </label>
+              <textarea
+                name="text"
+                type="textarea"
+                value={this.state.text}
+                onChange={this.onInputChange}
+                className="new-card-form__form-textarea"/>
+
+              <select
+                name="emoji"
+                className="new-card-form__form-select"
+                onChange={this.onInputChange}
+                value={this.state.emoji}>
+                {emojiOptions}
+              </select>
             <input type="submit" value="Submit" className="new-card-form__form-button" />
-          </div>
+
 
         </form>
 
       </section>
     );
   }
-
-
 }
 
-const FIELDS = ['text', 'emoji'];
 
 NewCardForm.propTypes = {
   addCardCallback: PropTypes.func,
