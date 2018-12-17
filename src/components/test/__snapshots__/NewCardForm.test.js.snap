@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewCardForm that it renders when passed an empty function 1`] = `
+<section
+  className="new-card-form"
+>
+  <section
+    className="new-card-form__header"
+  >
+    <h1>
+      Send an Inspiration!
+    </h1>
+  </section>
+  <form
+    className="new-card-form__form"
+    onSubmit={[Function]}
+  >
+    <label
+      className="new-card-form__form-label"
+      htmlFor="Text"
+    />
+    <textarea
+      className="new-card-form__form-textarea"
+      name="text"
+      onChange={[Function]}
+      type="textarea"
+      value=""
+    />
+    <select
+      className="new-card-form__form-select"
+      name="emoji"
+      onChange={[Function]}
+      value=""
+    >
+      <option
+        key="0"
+        value=""
+      />
+      <option
+        key="1"
+        value="heart_eyes"
+      >
+        😍
+      </option>
+      <option
+        key="2"
+        value="beer"
+      >
+        🍺
+      </option>
+      <option
+        key="3"
+        value="clap"
+      >
+        👏
+      </option>
+      <option
+        key="4"
+        value="sparkling_heart"
+      >
+        💖
+      </option>
+      <option
+        key="5"
+        value="heart_eyes_cat"
+      >
+        😻
+      </option>
+      <option
+        key="6"
+        value="dog"
+      >
+        🐶
+      </option>
+    </select>
+    <input
+      className="new-card-form__form-button"
+      type="submit"
+      value="Submit"
+    />
+  </form>
+</section>
+`;
